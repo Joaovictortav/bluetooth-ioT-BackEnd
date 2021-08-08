@@ -15,9 +15,9 @@ const port = new portBluetooth("COM5", {
 });
 
 app.get('/', (req, res, next) => {
-    res.send(dadosArduino);
+    res.send(`<h1>Hey Socket.io ${dadosArduino}</h1>`);
 });
-// const io = require('socket.io')(server);
+
 
 io.on('connection', socket => {
     console.log(`Socket conectado: ${socket.id}`);
@@ -26,7 +26,7 @@ io.on('connection', socket => {
 port.pipe(parser);
 port.on('open', () => {
     console.log('Conexão bluetooth iniciada...');
-    port.write('3', function(err) {
+    port.write('2', function(err) {
         if (err) {
             return console.log('Error on write: ', err.message);
         }
