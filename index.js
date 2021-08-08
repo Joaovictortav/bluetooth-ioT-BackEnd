@@ -1,7 +1,11 @@
 const portBluetooth = require('serialport');
 const app = require('express')();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, {
+    cors: {
+        origins: ['http://localhost:4200']
+    }
+});
 
 const ReadLine = portBluetooth.parsers.Readline;
 let dadosArduino;
@@ -13,16 +17,15 @@ const port = new portBluetooth("COM5", {
 app.get('/', (req, res, next) => {
     res.send(dadosArduino);
 });
-server.listen(8080, () => {
-    console.log('Servidor na porta %d', server.address().port)
-});
+// const io = require('socket.io')(server);
+
+io.on('connection', socket => {
+    console.log(`Socket conectado: ${socket.id}`);
+})
 
 port.pipe(parser);
 port.on('open', () => {
     console.log('Conexão bluetooth iniciada...');
-    io.on('connection', socket => {
-        console.log(`Socket conectado: ${socket.id}`);
-    })
     port.write('3', function(err) {
         if (err) {
             return console.log('Error on write: ', err.message);
@@ -32,4 +35,8 @@ port.on('open', () => {
         dadosArduino = line;
         console.log(line);
     });
+});
+
+http.listen(8080, () => {
+    console.log('Servidor na porta %d', http.address().port)
 });
