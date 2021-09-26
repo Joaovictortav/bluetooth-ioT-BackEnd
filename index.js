@@ -1,3 +1,4 @@
+const db = require('./db');
 const portBluetooth = require('serialport');
 const app = require('express')();
 const http = require('http').createServer(app);
@@ -10,14 +11,13 @@ const io = require('socket.io')(http, {
 const ReadLine = portBluetooth.parsers.Readline;
 let dadosArduino;
 const parser = new ReadLine({ delimiter: '\r\n' });
-const port = new portBluetooth("COM5", {
+const port = new portBluetooth("COM4", {
     baudRate: 9600,
 });
 
 app.get('/', (req, res, next) => {
     res.send(`<h1>Hey Socket.io ${dadosArduino}</h1>`);
 });
-
 
 io.on('connection', socket => {
     console.log(`Socket conectado: ${socket.id}`);
@@ -27,18 +27,12 @@ io.on('connection', socket => {
                 return console.log('Error on write: ', err.message);
             }
         });
-        // console.log(arg);
     });
 })
 
 port.pipe(parser);
 port.on('open', () => {
     console.log('Conexão bluetooth iniciada...');
-    // port.write('1', function(err) {
-    //     if (err) {
-    //         return console.log('Error on write: ', err.message);
-    //     }
-    // });
     parser.on('data', (line) => {
         dadosArduino = line;
         console.log(line);
