@@ -16,3 +16,5 @@ port.on('open', () => {
         console.log(line);
     });
 });
+
+module.exports = port;

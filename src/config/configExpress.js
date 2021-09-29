@@ -11,4 +11,4 @@ http.listen(8080, () => {
     console.log('Servidor na porta %d', http.address().port)
 });
 
-module.exports = app;
+module.exports = { app, http };
