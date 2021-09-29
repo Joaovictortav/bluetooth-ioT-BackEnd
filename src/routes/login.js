@@ -1,3 +1,5 @@
+const { app } = require('../config/configExpress');
+
 app.get('/', (req, res, next) => {
     try {
         res.status(200).send(`<h1>Hey Socket.io</h1>`);
