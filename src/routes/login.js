@@ -1,3 +1,4 @@
+const bd = require('../config/configMysql');
 const { app } = require('../config/configExpress');
 
 app.get('/', (req, res, next) => {
@@ -10,8 +11,17 @@ app.get('/', (req, res, next) => {
 
 app.post('/', (req, res, next) => {
     try {
-        console.log(req.body);
-        res.status(200).send('Realizado com sucesso!');
+        let SQL = `SELECT * FROM resgistro_login
+                WHERE email='${req.body.email}' AND password='${req.body.senha}'`;
+
+        bd.query(SQL, (error, result) => {
+            if (error) {
+                console.error
+            } else {
+                console.log(result);
+                res.status(200).send('Realizado com sucesso!');
+            }
+        })
     } catch (error) {
         console.log(error)
     }

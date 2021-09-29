@@ -1,3 +1,4 @@
+const bd = require('../config/configMysql');
 const { port, parser } = require('../config/configBluetooth');
 const { http } = require('../config/configExpress');
 const socket = require('../config/configSocket');
