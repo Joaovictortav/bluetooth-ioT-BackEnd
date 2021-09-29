@@ -1,4 +1,5 @@
 const db = require('./db');
+const cors = require('cors')
 const bodyParser = require('body-parser');
 // const portBluetooth = require('serialport');
 const app = require('express')();
@@ -9,24 +10,27 @@ const io = require('socket.io')(http, {
     }
 });
 
-const ReadLine = portBluetooth.parsers.Readline;
+// const ReadLine = portBluetooth.parsers.Readline;
 let dadosArduino;
-const parser = new ReadLine({ delimiter: '\r\n' });
+// const parser = new ReadLine({ delimiter: '\r\n' });
 // const port = new portBluetooth("COM4", {
 //     baudRate: 9600,
 // });
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(cors());
 
 app.get('/', (req, res, next) => {
     try {
-        res.send(`<h1>Hey Socket.io ${dadosArduino}</h1>`);
+        res.send(`<h1>Hey Socket.io</h1>`);
     } catch (error) {
         console.log(error)
     }
 });
 
 app.post('/', (req, res, next) => {
+    console.log(req.body);
     try {
         res.send('Realizado com sucesso!');
     } catch (error) {
@@ -46,8 +50,6 @@ io.on('connection', socket => {
 })
 
 // port.pipe(parser);
-
-// Comentei aqui para não dar erro ao tentar conectar com o bluetooth HC-06
 
 // port.on('open', () => {
 //     console.log('Conexão bluetooth iniciada...');
