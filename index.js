@@ -23,16 +23,16 @@ app.use(cors());
 
 app.get('/', (req, res, next) => {
     try {
-        res.send(`<h1>Hey Socket.io</h1>`);
+        res.status(200).send(`<h1>Hey Socket.io</h1>`);
     } catch (error) {
         console.log(error)
     }
 });
 
 app.post('/', (req, res, next) => {
-    console.log(req.body);
     try {
-        res.send('Realizado com sucesso!');
+        console.log(req.body);
+        res.status(200).send('Realizado com sucesso!');
     } catch (error) {
         console.log(error)
     }
