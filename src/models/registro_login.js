@@ -1,4 +1,4 @@
-const database = require('../config/configMysql');
+const database = require('../config/configDataBase');
 const Sequelize = require('sequelize');
 
 const login = database.define('login', {
