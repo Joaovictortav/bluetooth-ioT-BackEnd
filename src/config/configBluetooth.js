@@ -9,16 +9,4 @@ const port = new portBluetooth("COM4", {
 
 port.pipe(parser);
 
-port.on('open', () => {
-    console.log('Conexão bluetooth iniciada...');
-
-    // Não sei se chama aqui!!
-    parser.on('data', (line) => {
-        dadosArduino = line;
-        console.log(line);
-    });
-
-
-});
-
 module.exports = { port, parser };
