@@ -17,6 +17,12 @@ const login = database.define('login', {
         type: Sequelize.STRING(16),
         allowNull: false
     }
+}, {
+    timestamps: false,
+
+    createdAt: false,
+
+    updatedAt: false,
 })
 
 module.exports = login;

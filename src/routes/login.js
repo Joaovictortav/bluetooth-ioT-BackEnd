@@ -12,10 +12,9 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
     try {
-        const response = loginService(req.body, (data, error) => {
-            console.log(data);
+        loginService(req.body, (response) => {
+            res.status(response.status).send(response.message);
         });
-        // res.status(response.status).send(response.body);
     } catch (error) {
         console.log(error);
         res.status(400).send("Erro ao fazer requisição");
