@@ -16,8 +16,7 @@ router.post("/", (req, res, next) => {
             res.status(response.status).json(response);
         });
     } catch (error) {
-        console.log(error);
-        res.status(400).send("Erro ao fazer requisição");
+        res.status(400).send("Erro ao fazer requisição: " + error);
     }
 });
 

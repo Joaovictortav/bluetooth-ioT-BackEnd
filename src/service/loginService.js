@@ -2,9 +2,8 @@ const database = require("../config/configDataBase.js");
 const login = require('../models/registro_login');
 
 function fazerLogin({ email, password }, fn) {
-    console.log('E-mail: ' + email + ' Senha: ' + password);
     try {
-        const user = login.findOne({
+        login.findOne({
             where: {
                 email: email
             }
@@ -23,7 +22,6 @@ function fazerLogin({ email, password }, fn) {
                     body: "",
                 });
         });
-        console.log(user);
     } catch (error) {
         console.log(error);
     }
