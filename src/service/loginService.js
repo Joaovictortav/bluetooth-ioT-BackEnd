@@ -1,5 +1,7 @@
 const database = require("../config/configDataBase.js");
-const login = require('../models/registro_login');
+const login = require('../models/registro_login')
+
+database.sync();
 
 function fazerLogin({ email, password }) {
     console.log('E-mail: ' + email + ' Senha: ' + password);
@@ -12,12 +14,7 @@ function fazerLogin({ email, password }) {
 module.exports = fazerLogin;
 
 
-// bd.query(SQL, (error, result) => {
-//   if (error) {
-//       console.error;
-//   } else {
-//       const usuario = result[0];
-//       console.log('Resultado: ' + usuario.password);
+
 //       if (usuario.email === email && usuario.password === password)
 //           return {
 //               message: "Realizado com sucesso!",
@@ -31,5 +28,3 @@ module.exports = fazerLogin;
 //               status: 401,
 //               body: "",
 //           };
-//   }
-// });
