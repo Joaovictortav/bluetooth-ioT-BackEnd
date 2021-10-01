@@ -1,4 +1,4 @@
-const database = require("../config/configMysql.js");
+const database = require("../config/configDataBase.js");
 const login = require('../models/registro_login');
 
 function fazerLogin({ email, password }) {
