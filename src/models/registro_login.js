@@ -1,7 +1,22 @@
-class Registro_login {
-  email;
-  password;
-  id;
-}
+const database = require('../config/configMysql');
+const Sequelize = require('sequelize');
 
-module.exports = Registro_login;
+const login = database.define('login', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    email: {
+        type: Sequelize.STRING(150),
+        allowNull: false,
+        unique: true
+    },
+    password: {
+        type: Sequelize.STRING(16),
+        allowNull: false
+    }
+})
+
+module.exports = login;

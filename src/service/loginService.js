@@ -1,9 +1,10 @@
 const database = require("../config/configMysql.js");
+const login = require('../models/registro_login');
 
 function fazerLogin({ email, password }) {
     console.log('E-mail: ' + email + ' Senha: ' + password);
     try {
-        let SQL = `SELECT * FROM registro_login WHERE email='${email}'`;
+        // let SQL = `SELECT * FROM registro_login WHERE email='${email}'`;
     } catch (error) {
         console.log(error);
     }
