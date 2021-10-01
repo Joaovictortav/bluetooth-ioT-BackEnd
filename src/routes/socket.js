@@ -9,7 +9,7 @@ port.on('open', () => {
 
     parser.on('data', (line) => {
         dadosArduino = line;
-        console.log(line);
+        // console.log(line);
     });
 
 });
@@ -20,7 +20,7 @@ io.on("connection", (socket) => {
     socket.on("led", (arg) => {
         port.write(`${arg}`, function(err) {
             if (err) {
-                return console.log("Error on write: ", err.message);
+                return console.log("Error: ", err.message);
             }
         });
     });

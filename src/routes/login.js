@@ -12,11 +12,9 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
     try {
-        const response = loginService(req.body, (data, error) =>
-            then((data) => {
-                console.log(data);
-            })
-        );
+        const response = loginService(req.body, (data, error) => {
+            console.log(data);
+        });
         // res.status(response.status).send(response.body);
     } catch (error) {
         console.log(error);

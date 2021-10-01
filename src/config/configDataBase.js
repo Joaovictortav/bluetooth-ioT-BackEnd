@@ -6,9 +6,9 @@ const sequelize = new Sequelize('iot_bluetooth', 'root', 'rootroot', {
 });
 
 sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
+    console.log('Conexão com o banco de dados MySql realizada com sucesso!');
 }).catch((error) => {
-    console.error('Unable to connect to the database:', error);
+    console.error('Erro ao conectar com banco de dados MySql: ', error);
 });
 
 // const mysql = require('mysql');
