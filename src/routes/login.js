@@ -13,7 +13,7 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
     try {
         loginService(req.body, (response) => {
-            res.status(response.status).send(response.message);
+            res.status(response.status).json(response);
         });
     } catch (error) {
         console.log(error);

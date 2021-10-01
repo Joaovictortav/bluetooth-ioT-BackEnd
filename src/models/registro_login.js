@@ -19,9 +19,7 @@ const login = database.define('login', {
     }
 }, {
     timestamps: false,
-
     createdAt: false,
-
     updatedAt: false,
 })
 
