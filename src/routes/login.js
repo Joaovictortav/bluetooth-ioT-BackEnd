@@ -1,5 +1,5 @@
 const loginService = require("../service/loginService");
-
+const authMidleware = require('../authMidleware');
 const router = require("express").Router();
 
 router.get("/", (req, res, next) => {

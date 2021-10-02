@@ -1,5 +1,7 @@
 const database = require("../config/configDataBase.js");
 const login = require('../models/registro_login');
+const config = require('../auth');
+const jwt = require('jsonwebtoken');
 
 function fazerLogin({ email, password }, fn) {
     try {
@@ -12,8 +14,9 @@ function fazerLogin({ email, password }, fn) {
                 fn({
                     message: "Realizado com sucesso!",
                     status: 200,
-                    headers: "",
-                    body: "token laskjdfhaiosudf",
+                    body: {
+                        token: jwt.sign({ id: usuario.id }, config.secret, { expiresIn: config.expireIn })
+                    },
                 });
             else
                 fn({
