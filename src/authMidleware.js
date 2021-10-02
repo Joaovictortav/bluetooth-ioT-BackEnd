@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const config = require('./auth');
-const { promisify } = require('util');
 
 module.exports = async(req, res, next) => {
     const auth = req.headers.authorization;
@@ -13,16 +12,16 @@ module.exports = async(req, res, next) => {
     const [bearer, token] = auth.split(' ');
 
     try {
-        const decode = await promisify(jwt.verify(token, config.secret));
-
-        if (!decode) {
-            return res.status(401).json({
-                code: 130,
-                message: 'Token expirado!'
-            });
-        } else {
-            next();
-        }
+        jwt.verify(token, config.secret, function(err, decode) {
+            if (!decode) {
+                return res.status(401).json({
+                    code: 130,
+                    message: 'Token expirado!'
+                });
+            } else {
+                next();
+            }
+        });
     } catch {
         return res.status(401).json({
             code: 130,

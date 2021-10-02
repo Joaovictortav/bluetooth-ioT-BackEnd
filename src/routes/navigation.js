@@ -1,7 +1,6 @@
-const authMidleware = require('../authMidleware');
 const router = require("express").Router();
 
-router.get("/", authMidleware, (req, res, next) => {
+router.get("/", (req, res, next) => {
     try {
         res.status(200).send(`<h1>Hey Socket.io</h1>`);
     } catch (error) {

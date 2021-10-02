@@ -22,7 +22,9 @@ function fazerLogin({ email, password }, fn) {
                 fn({
                     message: "Usuário ou Senha inválidos",
                     status: 401,
-                    body: "",
+                    body: {
+                        token: null
+                    },
                 });
         });
     } catch (error) {
