@@ -13,9 +13,8 @@ module.exports = async(req, res, next) => {
     const [bearer, token] = auth.split(' ');
 
     try {
-        const decode = await promisify(jwt.verify)(token, config.secret);
+        const decode = await promisify(jwt.verify(token, config.secret));
 
-        console.log('decode: ' + decode);
         if (!decode) {
             return res.status(401).json({
                 code: 130,
