@@ -10,7 +10,7 @@ const client = mqtt.connect(connectUrl, {
     clientId,
     clean: true,
     connectTimeout: 4000,
-    reconnectPeriod: 1000,
+    reconnectPeriod: 10000,
 });
 
 module.exports = client;
