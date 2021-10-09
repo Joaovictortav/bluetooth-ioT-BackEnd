@@ -1,4 +1,3 @@
-const database = require("../config/configDataBase.js");
 const login = require('../models/registro_login');
 const config = require('../auth');
 const jwt = require('jsonwebtoken');
