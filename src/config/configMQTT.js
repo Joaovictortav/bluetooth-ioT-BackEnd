@@ -7,7 +7,7 @@ const clientId = `mqtt_1`;
 const connectUrl = `mqtt://${host}:${port}`;
 
 const client = mqtt.connect(connectUrl, {
-    clientId,
+    id: clientId,
     clean: true,
     connectTimeout: 4000,
     reconnectPeriod: 10000,

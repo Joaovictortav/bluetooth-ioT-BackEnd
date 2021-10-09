@@ -4,10 +4,13 @@ client.on('connect', () => {
     console.log('Connected ao brocker!');
 });
 
+client.on("error", (e) => {
+    this.logger.error("MQTT error.", e.message);
+    this.logger.debug(e);
+});
+
 client.on("offline", function() {
     client.end();
 });
 
-client.on('ledVermelho', (topic, payload) => {
-    console.log('Received Message:', topic, payload.toString())
-});
+module.exports = client;
