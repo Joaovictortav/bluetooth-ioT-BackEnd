@@ -1,6 +1,6 @@
 const mqtt = require('mqtt');
 
-const host = 'localhost';
+const host = '192.168.1.136';
 const port = '8081';
 const clientId = `mqtt_1`;
 
@@ -10,8 +10,6 @@ const client = mqtt.connect(connectUrl, {
     clientId,
     clean: true,
     connectTimeout: 4000,
-    username: 'project-IoT',
-    password: 'senha',
     reconnectPeriod: 1000,
 });
 

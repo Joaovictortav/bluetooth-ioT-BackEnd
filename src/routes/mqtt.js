@@ -1,6 +1,5 @@
 const client = require('../config/configMQTT');
 
-const topic = '/nodejs/mqtt'
 client.on('connect', () => {
     console.log('Connected');
     client.subscribe([topic], () => {
@@ -8,6 +7,6 @@ client.on('connect', () => {
     })
 });
 
-client.on('message', (topic, payload) => {
+client.on('ledVermelho', (topic, payload) => {
     console.log('Received Message:', topic, payload.toString())
 })
