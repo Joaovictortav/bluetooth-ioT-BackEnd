@@ -1,7 +1,7 @@
 const mqtt = require('mqtt');
 
 const host = '192.168.1.136';
-const port = '8081';
+const port = '1883';
 const clientId = `mqtt_1`;
 
 const connectUrl = `mqtt://${host}:${port}`;

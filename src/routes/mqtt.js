@@ -1,12 +1,9 @@
 const client = require('../config/configMQTT');
 
 client.on('connect', () => {
-    console.log('Connected');
-    client.subscribe([topic], () => {
-        console.log(`Subscribe to topic '${topic}'`);
-    })
+    console.log('Connected ao brocker!');
 });
 
 client.on('ledVermelho', (topic, payload) => {
     console.log('Received Message:', topic, payload.toString())
-})
+});

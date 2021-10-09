@@ -1,6 +1,7 @@
 const http = require("./src/http");
 require('./src/models');
 require("./src/routes/socket");
+require("./src/config/configBrocker");
 require("./src/routes/mqtt");
 
 http.listen(8080, () => {
