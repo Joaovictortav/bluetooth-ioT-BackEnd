@@ -1,9 +1,9 @@
-const http = require('../connection')
+const http = require('../connection');
 
 const io = require('socket.io')(http, {
     cors: {
-        origins: ['*:*']
-    }
+        origins: "*",
+    },
 });
 
 module.exports = io;
