@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('iot_bluetooth', 'root', 'rootroot', {
+const sequelize = new Sequelize('iot_project', 'root', 'rootroot', {
     host: 'localhost',
     dialect: 'mysql'
 });
