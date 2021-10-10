@@ -1,5 +1,5 @@
 const io = require("../config/configSocket");
-const client = require('./mqtt');
+const client_mqtt_1 = require('../config/clientsMQTT/mqtt_1');
 
 io.on("connection", (socket) => {
     console.log(`Socket conectado: ${socket.id}`);
@@ -7,13 +7,13 @@ io.on("connection", (socket) => {
     socket.on("led", (arg) => {
         switch (arg) {
             case '1':
-                client.publish("ledVermelho", arg);
+                client_mqtt_1.publish("ledVermelho", arg);
                 break;
             case '2':
-                client.publish("ledAzul", arg);
+                client_mqtt_1.publish("ledAzul", arg);
                 break;
             case '3':
-                client.publish("ledVerde", arg);
+                client_mqtt_1.publish("ledVerde", arg);
                 break;
         }
     });
