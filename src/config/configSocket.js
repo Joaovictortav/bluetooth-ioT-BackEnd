@@ -1,4 +1,4 @@
-const http = require('../http');
+const http = require('./configHttp');
 
 const io = require('socket.io')(http, {
     cors: {

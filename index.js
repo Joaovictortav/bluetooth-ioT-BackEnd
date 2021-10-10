@@ -1,4 +1,5 @@
-const http = require("./src/http");
+const http = require("./src/config/configHttp");
+
 require('./src/models');
 require("./src/routes/socket");
 require("./src/config/configBrocker");

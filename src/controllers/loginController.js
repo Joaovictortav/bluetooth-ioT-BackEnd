@@ -1,5 +1,5 @@
 const login = require('../models/registro_login');
-const config = require('../auth');
+const config = require('../config/auth');
 const jwt = require('jsonwebtoken');
 
 function fazerLogin({ email, password }, fn) {
