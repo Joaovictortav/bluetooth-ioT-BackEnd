@@ -12,11 +12,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-    res.status(200).json("TESTANDO");
+    res.status(200).send("<h1>TESTANDO</h1>");
 })
 
-app.use("/", router_authentication);
-app.use("/login", router_login);
-app.use("/home", router_navigation);
+// app.use("/", router_authentication);
+app.use("/login", router_login); app.use("/home", router_navigation);
 
 module.exports = app;
