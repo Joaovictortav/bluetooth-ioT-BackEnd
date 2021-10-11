@@ -10,5 +10,4 @@ io.on("connection", (socket) => {
     socket.on("led", (arg) => {
         controllerLed(arg, client_mqtt_1);
     });
-
 });
