@@ -2,7 +2,8 @@ const mqtt = require('mqtt');
 
 module.exports = (clientId) => {
 
-    const host = '192.168.1.136';
+    // const host = 'localhost';
+    const host = 'broker.hivemq.com';
     const port = '1883';
 
     const connectUrl = `mqtt://${host}:${port}`;
