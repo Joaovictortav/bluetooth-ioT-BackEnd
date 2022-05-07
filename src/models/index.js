@@ -1,5 +1,6 @@
 const database = require("../config/configDataBase");
 
-const login = require('./registro_login');
+// Carregando tabelas
+require('./registro_login');
 
 database.sync();

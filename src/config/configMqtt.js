@@ -2,8 +2,8 @@ const mqtt = require('mqtt');
 
 module.exports = (clientId) => {
 
-    // const host = 'localhost';
-    const host = 'broker.hivemq.com';
+    const host = 'localhost';
+    // const host = 'broker.hivemq.com';
     const port = '1883';
 
     const connectUrl = `mqtt://${host}:${port}`;
@@ -17,6 +17,11 @@ module.exports = (clientId) => {
 
     client.on('connect', () => {
         console.log('Connected ao brocker!');
+        client.subscribe('outTopic')
+    });
+
+    client.on('message', (topic, message) => {
+        console.log(topic + ": ", message.toString())
     });
 
     client.on("error", (e) => {
