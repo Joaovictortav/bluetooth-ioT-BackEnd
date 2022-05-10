@@ -1,4 +1,5 @@
 const mqtt = require('mqtt');
+const {controllerOut, controllerIn } = require('../controllers/mqttController');
 
 module.exports = (clientId) => {
 
@@ -21,7 +22,7 @@ module.exports = (clientId) => {
     });
 
     client.on('message', (topic, message) => {
-        console.log(topic + ": ", message.toString())
+        controllerIn(topic, message.toString());
     });
 
     client.on("error", (e) => {
