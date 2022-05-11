@@ -1,5 +1,6 @@
 const mqtt = require('mqtt');
 const {controllerOut, controllerIn } = require('../controllers/mqttController');
+const fs = require('fs');
 
 module.exports = (clientId) => {
 
@@ -22,7 +23,11 @@ module.exports = (clientId) => {
     });
 
     client.on('message', (topic, message) => {
-        controllerIn(topic, message.toString());
+        // controllerIn(topic, message.toString());
+        fs.appendFileSync('message.txt', message + "\n", function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
     });
 
     client.on("error", (e) => {
