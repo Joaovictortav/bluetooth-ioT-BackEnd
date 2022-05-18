@@ -4,7 +4,7 @@ const fs = require('fs');
 
 module.exports = (clientId) => {
 
-    const host = 'localhost';
+    const host = '192.168.1.142';
     // const host = 'broker.hivemq.com';
     const port = '1883';
 
